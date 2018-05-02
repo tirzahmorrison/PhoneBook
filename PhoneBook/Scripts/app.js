@@ -12,7 +12,7 @@
         $http({
             url: "/token",
             method: "POST",
-            data: data,
+            data: userInput,
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
@@ -27,14 +27,43 @@
                 console.log(resp)
                 localStorage.setItem("token", resp.data.access_token)
             }
-            })
 
-        //use /api/contacts
+            //use /api/contacts
             //GET request using authorization/bearer with "token" in local storage
             //return list of contacts
+            $http({
+                url: "/api/contacts",
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer" + localStorage.getItem("token")
+                },
+            }).then(resp => {
+                console.log(resp)
+                $scope.contacts = resp.data;
+            }
+                
+        })
     }
 
 
+
     //new user signs up
-        //take username and password and create new user in db
+    //take username and password and create new user in db
+    $scope.signup = () => {
+
+        const newUserInput = {
+            UserName: $scope.newusername,
+            Password: $scope.newpassword,
+            ConfirmPassword: $scope.newpasswordconfirmed
+        }
+
+        $http({
+            url: "/api/account/register",
+            method: "POST",
+            data: newUserInput
+        }).then(resp => {
+            console.log(resp)
+            $scope.newUser = resp.data;
+        }
+    }
 }])
