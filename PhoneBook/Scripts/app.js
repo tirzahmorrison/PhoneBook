@@ -35,12 +35,12 @@
                 url: "/api/contacts",
                 method: "GET",
                 headers: {
-                    "Authorization": "Bearer" + localStorage.getItem("token")
+                    "Authorization": "Bearer " + localStorage.getItem("token")
                 },
             }).then(resp => {
                 console.log(resp)
                 $scope.contacts = resp.data;
-            }
+            })
                 
         })
     }
@@ -50,6 +50,8 @@
     //new user signs up
     //take username and password and create new user in db
     $scope.signup = () => {
+
+        $scope.UserValid = false;
 
         const newUserInput = {
             UserName: $scope.newusername,
@@ -64,6 +66,7 @@
         }).then(resp => {
             console.log(resp)
             $scope.newUser = resp.data;
-        }
+            $scope.UserValid = true;
+        })
     }
 }])
