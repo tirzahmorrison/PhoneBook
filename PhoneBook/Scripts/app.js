@@ -51,6 +51,8 @@
     //take username and password and create new user in db
     $scope.signup = () => {
 
+        $scope.UserValid = false;
+
         const newUserInput = {
             UserName: $scope.newusername,
             Password: $scope.newpassword,
@@ -64,6 +66,7 @@
         }).then(resp => {
             console.log(resp)
             $scope.newUser = resp.data;
+            $scope.UserValid = true;
         })
     }
 }])
