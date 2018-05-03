@@ -7,9 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 public class AuthContext : IdentityDbContext<IdentityUser>
 {
+    
     public AuthContext()
         : base("AuthContext")
     {
