@@ -40,7 +40,7 @@
             }).then(resp => {
                 console.log(resp)
                 $scope.contacts = resp.data;
-            }
+            })
                 
         })
     }
@@ -64,6 +64,6 @@
         }).then(resp => {
             console.log(resp)
             $scope.newUser = resp.data;
-        }
+        })
     }
 }])
