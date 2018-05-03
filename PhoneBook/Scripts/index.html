@@ -2,14 +2,14 @@
 <html data-ng-app="AngularAuthApp">
 <head>
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
-  
+
     <title>AngularJS Authentication</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
 <body ng-app="main" ng-controller="mainController">
     <div class="text-center" style="padding:50px 0">
         <div class="logo">login</div>
-    
+
         <div class="login-form-1">
             <form id="login-form" class="text-left">
                 <div class="login-form-main-message"></div>
@@ -24,23 +24,25 @@
                             <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password" ng-model="password">
                         </div>
                     </div>
-                    <button class="login-button" ng-click="login()"><i class="fa fa-chevron-right"></i></button>
+                    <button class="login-button" ng-click="login()"><i class="fa fa-chevron-right"></i>Login</button>
                 </div>
             </form>
+            <button class="button" ng-show="UserValid" ng-click="addContact()"><i class="fa fa-chevron-right"></i>Add contact</button>
             <ul>
                 <li ng-repeat="contact in contacts">
                     <div>
-                        <p>name: {{contact.name}}</p>
-                        <p>address: {{contact.address}}</p>
-                        <p>email: {{contact.email}}</p>
-                        <p>phone number: {{contact.phoneNumber}}</p>
-                        <p>preferred contact method: {{contact.preferredContactMethod}}</p>
+                        <p>name: {{contact.Name}}</p>
+                        <p>address: {{contact.Address}}</p>
+                        <p>email: {{contact.Email}}</p>
+                        <p>phone number: {{contact.PhoneNumber}}</p>
+                        <p>preferred contact method: {{contact.PreferredContactMethod}}</p>
 
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+
 
     <div class="text-center" style="padding:50px 0">
         <div class="logo">Create account</div>
@@ -61,8 +63,8 @@
                             <label for="su_passwordConfirmation" class="sr-only">Confirm Password</label>
                             <input type="password" class="form-control" id="su_passwordConfirmation" name="su_passwordConfirmation" placeholder="confirm password" ng-model="newpasswordconfirmed">
                         </div>
+                        <button class="signup-button" ng-click="signup()"><i class="fa fa-chevron-right"></i>Sign Up</button>
                     </div>
-                    <button class="signup-button" ng-click="signup()"><i class="fa fa-chevron-right"></i></button>
                 </div>
             </form>
         </div>
